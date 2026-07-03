@@ -1,0 +1,30 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#map {
+
+    flex: 1;
+
+    height: 650px;
+
+}
+
+.app-layout {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: flex-start;
+
+}
+
+#toolPanel {
+
+    width: 280px;
+
+}

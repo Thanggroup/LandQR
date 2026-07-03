@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LandQR</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <h1>LandQR</h1>
+
+    <div class="app-layout">
+
+        <div id="map"></div>
+
+        <aside id="toolPanel">
+
+            <h2>Parcel</h2>
+
+            <p id="parcelName">demo</p>
+
+            <h2>Open Parcel</h2>
+
+            <input
+                type="file"
+                id="parcelFileInput"
+                accept=".txt">
+
+            <h2>QR Code</h2>
+
+            <div id="qrCode"></div>
+
+            <hr>
+
+            <button id="copyUrlButton">
+                Copy URL
+            </button>
+
+            <button id="exportKmlButton">
+                Export KML
+            </button>
+
+            <hr>
+
+            <p>
+                Corners:
+                <span id="cornerCount"></span>
+            </p>
+
+        </aside>
+
+    </div>
+
+    <script src="js/config.js"></script>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script src="js/proj4.js"></script>
+    <script src="js/vn2000/khanh_hoa.js"></script>
+
+    <script src="js/fileLoader.js"></script>
+    <script src="js/parser.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/url.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/converter.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/qr.js"></script>
+    <script src="js/kml.js"></script>
+
+</body>
+
+</html>
