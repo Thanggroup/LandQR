@@ -1,16 +1,13 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 #map {
-
     flex: 1;
-
-    height: 650px;
-
+    min-height: 650px;
 }
 
 .app-layout {
@@ -24,7 +21,24 @@ body {
 }
 
 #toolPanel {
-
     width: 280px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+}
 
+@media (max-width: 768px) {
+    .app-layout {
+        flex-direction: column;
+    }
+
+    #toolPanel {
+        width: 100%;
+    }
+
+    #map {
+        min-height: unset;
+        height: 50vh;
+    }
 }
