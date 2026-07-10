@@ -5,26 +5,58 @@ body {
     height: 100%;
 }
 
-#map {
-
-    flex: 1;
-
-    height: 650px;
-
-}
-
 .app-layout {
 
     display: flex;
 
     gap: 20px;
 
-    align-items: flex-start;
+}
+
+#map {
+
+    width: 100%;
 
 }
 
 #toolPanel {
 
     width: 280px;
+
+    flex-shrink: 0;
+
+}
+/* ===========================================
+   Mobile Layout
+=========================================== */
+
+@media (max-width: 768px) {
+
+@media (max-width: 768px) {
+
+        .app-layout {
+
+            display: block;
+
+        }
+
+        #toolPanel {
+
+            width: calc(100% - 24px);
+            max-width: 500px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 16px;
+
+        }
+
+        #map {
+
+            width: 100%;
+            height: 450px;
+
+        }
+
+    }
 
 }
