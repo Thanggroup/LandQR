@@ -49,6 +49,13 @@ const APP_CONFIG = {
 
     },
 
+    cesium: {
+
+        accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNmU0M2MwNy1jNWRhLTRmODItODlhZS1hOTA2YWQzOTNkNzUiLCJpZCI6NDU1MDk3LCJpc3MiOiJodHRwczovL2FwaS5jZXNpdW0uY29tIiwiYXVkIjoidW5kZWZpbmVkX2RlZmF1bHQiLCJpYXQiOjE3ODM3MzI0MzV9.d_cZCGaLrwwIakd9r-EUPSqQcnZhBx-IgZigRSHs4ls",
+
+        parcelHeight: 0
+    },
+
     ui: {
 
     }

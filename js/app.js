@@ -23,19 +23,6 @@ async function main() {
             parcelText
         );
 
-        const parcelPoints = parseParcelText(parcelText);
-
-        const surveyCorners = buildSurveyCorners(parcelPoints);
-
-        displayParcel(surveyCorners);
-
-        document.getElementById("parcelName").textContent = parcelId;
-        const uniqueCornerCount = surveyCorners.length - 1;
-
-        document.getElementById("cornerCount").textContent = uniqueCornerCount;
-
-        generateParcelQr(parcelId);
-
         document
             .getElementById("parcelFileInput")
             .addEventListener(
@@ -51,8 +38,7 @@ async function main() {
 
                     }
 
-                    const parcelText =
-                        await openParcelFile(file);
+                    const parcelText = await openParcelFile(file);
 
                     await loadParcelFromText(
                         file.name.replace(".txt", ""),
@@ -90,26 +76,31 @@ async function main() {
 
 async function loadParcelFromText(parcelName, parcelText) {
 
+    const parcelPoints = parseParcelText(parcelText);
 
-
-    const parcelPoints =
-        parseParcelText(parcelText);
-
-    const surveyCorners =
-        buildSurveyCorners(parcelPoints);
+    const surveyCorners = buildSurveyCorners(parcelPoints);
 
     displayParcel(surveyCorners);
 
     generateParcelQr(parcelName);
 
-    document.getElementById("parcelName").textContent =
-        parcelName;
+    document.getElementById("parcelName").textContent = parcelName;
 
-    document.getElementById("cornerCount").textContent =
-        surveyCorners.length - 1;
+    document.getElementById("cornerCount").textContent = surveyCorners.length - 1;
 
     currentParcelName = parcelName;
     currentSurveyCorners = surveyCorners;
+    const center = surveyCorners[0].wgs84;
+
+    const metadata =
+        await loadImageryMetadata(
+            center.latitude,
+            center.longitude
+        );
+
+    const imagery = formatImageryMetadata(metadata);
+
+    updateImageryPanel(imagery);
 }
 
 main();

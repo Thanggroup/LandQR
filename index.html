@@ -8,6 +8,7 @@
     <title>LandQR</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Widgets/widgets.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,7 +18,7 @@
 
     <div class="app-layout">
 
-        <div id="map"></div>
+        <div id="viewer"></div>
 
         <aside id="toolPanel">
 
@@ -31,6 +32,23 @@
                 type="file"
                 id="parcelFileInput"
                 accept=".txt">
+
+            <h2>Imagery</h2>
+
+            <p>
+                Date:
+                <span id="imageryDate">-</span>
+            </p>
+
+            <p>
+                Provider:
+                <span id="imageryProvider">-</span>
+            </p>
+
+            <p>
+                Resolution:
+                <span id="imageryResolution">-</span>
+            </p>
 
             <h2>QR Code</h2>
 
@@ -68,9 +86,13 @@
     <script src="js/parser.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/url.js"></script>
-    <script src="js/map.js"></script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Cesium.js"></script>
+    <script src="js/earth.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/viewer.js"></script>
     <script src="js/loader.js"></script>
     <script src="js/converter.js"></script>
+    <script src="js/metadata.js"></script>
     <script src="js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="js/qr.js"></script>

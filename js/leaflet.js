@@ -2,9 +2,9 @@ let mapInstance = null;
 let parcelPolygon = null;
 let cornerMarkers = [];
 
-function initializeMap() {
+function initializeLeafletMap() {
 
-    mapInstance = L.map("map");
+    mapInstance = L.map("viewer");
 
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -36,7 +36,7 @@ function clearParcel() {
 
 }
 
-function displayParcel(surveyCorners) {
+function displayLeafletParcel(surveyCorners) {
 
     clearParcel();
 
