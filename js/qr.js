@@ -1,19 +1,13 @@
-function generateParcelQr(parcelId) {
+function generateParcelQr(url) {
 
     const container = document.getElementById("qrCode");
 
-    console.log(container);
-
     container.innerHTML = "";
 
-    const parcelUrl = buildParcelUrl(parcelId);
-
     new QRCode(container, {
-        text: parcelUrl,
+        text: url,
         width: 200,
         height: 200
     });
-
-    console.log("QR function started");
 
 }
