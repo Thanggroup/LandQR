@@ -61,7 +61,7 @@ const APP_CONFIG = {
     },
 
     api: {
-        url: "http://localhost:3000"
+        url: "https://landqr-api.onrender.com"
     }
 
 };
