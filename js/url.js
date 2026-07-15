@@ -11,7 +11,7 @@ function buildParcelUrl(parcelId) {
 function buildViewerUrl(parcelId) {
 
     return (
-        "http://localhost:5500"
+        "https://thanggroup.github.io/LandQR_viewer"
         + "/?id="
         + encodeURIComponent(parcelId)
     );
