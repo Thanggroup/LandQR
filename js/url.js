@@ -7,3 +7,13 @@ function buildParcelUrl(parcelId) {
     return currentUrl.toString();
 
 }
+
+function buildViewerUrl(parcelId) {
+
+    return (
+        "http://localhost:5500"
+        + "/?id="
+        + encodeURIComponent(parcelId)
+    );
+
+}

@@ -58,6 +58,10 @@ const APP_CONFIG = {
 
     ui: {
 
+    },
+
+    api: {
+        url: "http://localhost:3000"
     }
 
 };
