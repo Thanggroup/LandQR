@@ -2,68 +2,43 @@ function initializeRegionPreview(
     fabricCanvas,
     sourceCanvas
 ){
-
     const button = document.getElementById("previewButton");
 
+    button.addEventListener("click", async () => {
 
-    button.addEventListener("click",() => {
+        const objects = fabricCanvas.getObjects();
 
-            const objects = fabricCanvas.getObjects();
+        for (const object of objects) {
 
+            const region = {
+                x: object.left,
+                y: object.top,
+                width: object.width * object.scaleX,
+                height: object.height * object.scaleY
+            };
 
-            objects.forEach(
-                object => {
-
-                    const region =
-                    {
-                        x: object.left,
-
-                        y: object.top,
-
-                        width: object.width * object.scaleX,
-
-                        height: object.height * object.scaleY
-                    };
-
-
-                    const preview = cropRegion(
-                            sourceCanvas,
-                            region
-                        );
-
-
-                    if(object.name === "metadata")
-                    {
-                        showPreview(
-                            "metadataPreview",
-                            preview
-                        );
-                    }
-
-
-                    if(object.name === "coordinates")
-                    {
-                        showPreview(
-                            "coordinatePreview",
-                            preview
-                        );
-                    }
-
-
-                    if(object.name === "planning")
-                    {
-                        showPreview(
-                            "planningPreview",
-                            preview
-                        );
-                    }
-
-                }
+            const preview = cropRegion(
+                sourceCanvas,
+                region
             );
 
-        }
-    );
+            const text = await recognizeRegion(preview);
+            console.log(text);
 
+            if (object.name === "metadata") {
+                showPreview("metadataPreview", preview);
+            }
+
+            if (object.name === "coordinates") {
+                showPreview("coordinatePreview", preview);
+            }
+
+            if (object.name === "planning") {
+                showPreview("planningPreview", preview);
+            }
+        }
+
+    });
 }
 
 

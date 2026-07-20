@@ -32,14 +32,19 @@ function initializeRegionEditor(){
         );
 
 
-    fabricCanvas.setWidth(
-        pdfCanvas.width
-    );
+    fabricCanvas.setWidth(pdfCanvas.width);
+    fabricCanvas.setHeight(pdfCanvas.height);
 
+    const wrapper = fabricCanvas.wrapperEl;
 
-    fabricCanvas.setHeight(
-        pdfCanvas.height
-    );
+    wrapper.style.width = pdfCanvas.clientWidth + "px";
+    wrapper.style.height = pdfCanvas.clientHeight + "px";
+
+    fabricCanvas.upperCanvasEl.style.width = "100%";
+    fabricCanvas.upperCanvasEl.style.height = "100%";
+
+    fabricCanvas.lowerCanvasEl.style.width = "100%";
+    fabricCanvas.lowerCanvasEl.style.height = "100%";
 
     fabricCanvas.backgroundColor =
     "transparent";

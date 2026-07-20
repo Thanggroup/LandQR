@@ -59,3 +59,6 @@ function refresh() {
     fabricCanvas.renderAll();
 
 }
+
+console.log("Checking Tesseract...");
+console.log(Tesseract);

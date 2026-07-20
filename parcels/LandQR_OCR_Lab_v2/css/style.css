@@ -15,41 +15,30 @@ body {
 }
 
 #canvasContainer {
-
     position: relative;
-
     width: 900px;
-
     max-width: 100%;
-
 }
 
 
 #viewer {
-
     display: block;
-
-    width: 900px;
-
-    max-width: 100%;
-
     border: 1px solid #999;
-
     background: white;
-
 }
 
+
+#regionLayer,
+.canvas-container {
+    width: 100%;
+    height: auto;
+}
 
 #regionLayer {
-
     position: absolute;
-
     left: 0;
-
     top: 0;
-
 }
-
 
 /* Fabric creates this wrapper */
 .canvas-container {
