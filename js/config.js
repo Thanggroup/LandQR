@@ -58,6 +58,10 @@ const APP_CONFIG = {
 
     ui: {
 
+    },
+
+    api: {
+        url: "https://landqr-api.onrender.com"
     }
 
 };

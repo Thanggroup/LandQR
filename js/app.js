@@ -82,8 +82,6 @@ async function loadParcelFromText(parcelName, parcelText) {
 
     displayParcel(surveyCorners);
 
-    generateParcelQr(parcelName);
-
     document.getElementById("parcelName").textContent = parcelName;
 
     document.getElementById("cornerCount").textContent = surveyCorners.length - 1;
@@ -101,6 +99,22 @@ async function loadParcelFromText(parcelName, parcelText) {
     const imagery = formatImageryMetadata(metadata);
 
     updateImageryPanel(imagery);
+
+    const publishedParcel = buildPublishedParcel(
+        parcelName,
+        surveyCorners,
+        imagery
+    );
+
+    const parcelId = await publishParcel(
+        publishedParcel
+    );
+
+    const viewerUrl = buildViewerUrl(parcelId);
+
+    generateParcelQr(viewerUrl);
+
+    console.log(viewerUrl);
 }
 
 main();

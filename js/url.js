@@ -7,3 +7,13 @@ function buildParcelUrl(parcelId) {
     return currentUrl.toString();
 
 }
+
+function buildViewerUrl(parcelId) {
+
+    return (
+        "https://ktstravels.com/LandQR"
+        + "/?id="
+        + encodeURIComponent(parcelId)
+    );
+
+}
