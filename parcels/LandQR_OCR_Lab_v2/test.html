@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OCR Superscript Test</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<script>
+async function run() {
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = 800;
+    canvas.height = 250;
+
+    context.fillStyle = "white";
+    context.fillRect(0,0,canvas.width,canvas.height);
+
+    context.fillStyle = "black";
+
+    context.font = "30px Arial";
+
+    context.fillText("1124.2 m²",50,120);
+
+    const {
+        data:{text}
+    } = await Tesseract.recognize(
+        canvas,
+        "eng"
+    );
+
+    console.log(text);
+}
+
+run();
+
+</script>
+
+</body>
+</html>

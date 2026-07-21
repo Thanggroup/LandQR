@@ -16,7 +16,7 @@ async function renderDocument(file) {
     const viewport =
         page.getViewport({
 
-            scale: 4
+            scale: 6
 
         });
 

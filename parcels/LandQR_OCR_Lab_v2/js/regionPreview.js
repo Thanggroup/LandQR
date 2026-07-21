@@ -22,7 +22,9 @@ function initializeRegionPreview(
                 region
             );
 
-            const text = await recognizeRegion(preview);
+            const processedCanvas = preprocessCanvas(preview);
+
+            const text = await recognizeRegion(processedCanvas);
             console.log(text);
 
             if (object.name === "metadata") {
