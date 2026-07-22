@@ -11,7 +11,7 @@ async function initializeOcrWorker() {
 
     await ocrWorker.setParameters({
          tessedit_pageseg_mode: Tesseract.PSM.SINGLE_COLUMN,
-         user_defined_dpi: "400"
+         user_defined_dpi: "300"
     });
 
     console.log("OCR Worker Ready");
