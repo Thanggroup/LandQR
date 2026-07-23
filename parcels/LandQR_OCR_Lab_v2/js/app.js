@@ -1,54 +1,42 @@
 let appState = {
-    file: null,
-    canvas: null
+  file: null,
+  canvas: null,
 };
 
-const fileInput =
-    document.getElementById(
-        "fileInput"
-    );
+const fileInput = document.getElementById("fileInput");
 
-fileInput.addEventListener(
-    "change",
-    async event => {
+fileInput.addEventListener("change", async (event) => {
+  appState.file = event.target.files[0];
 
-        appState.file =
-            event.target.files[0];
+  if (!appState.file) {
+    return;
+  }
 
-        if (!appState.file) {
-            return;
-        }
+  appState.canvas = await renderDocument(appState.file);
 
-        appState.canvas =
-            await renderDocument(
-                appState.file
-            );
+  // Initialize OCR Worker once
+  await initializeOcrWorker();
 
-        // Initialize OCR Worker once
-        await initializeOcrWorker();
+  initializeRegionEditor();
 
-        initializeRegionEditor();
+  createRegions();
 
-        createRegions();
-
-        initializeRegionPreview(
-            fabricCanvas,
-            appState.canvas
-        );
-    }
-);
+  initializeRegionPreview(fabricCanvas, appState.canvas);
+});
 
 function refresh() {
-    // Fabric.js handles:
-    // - drawing regions
-    // - moving regions
-    // - resizing regions
-    if (!fabricCanvas) {
-        return;
-    }
+  // Fabric.js handles:
+  // - drawing regions
+  // - moving regions
+  // - resizing regions
+  if (!fabricCanvas) {
+    return;
+  }
 
-    fabricCanvas.renderAll();
+  fabricCanvas.renderAll();
 }
 
 console.log("Checking Tesseract...");
 console.log(Tesseract);
+console.log("Land Document");
+console.log(landDocument);

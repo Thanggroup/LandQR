@@ -1,76 +1,69 @@
-function initializeRegionPreview(
-    fabricCanvas,
-    sourceCanvas
-){
-    const button = document.getElementById("previewButton");
+function initializeRegionPreview(fabricCanvas, sourceCanvas) {
+  const button = document.getElementById("previewButton");
 
-    button.addEventListener("click", async () => {
+  button.addEventListener("click", async () => {
+    const objects = fabricCanvas.getObjects();
 
-        const objects = fabricCanvas.getObjects();
+    const ocrResult = {
+      metadata: "",
 
-        for (const object of objects) {
+      coordinates: "",
 
-            const region = {
-                x: object.left,
-                y: object.top,
-                width: object.width * object.scaleX,
-                height: object.height * object.scaleY
-            };
+      planning: "",
+    };
 
-            const preview = cropRegion(
-                sourceCanvas,
-                region
-            );
+    for (const object of objects) {
+      const region = {
+        x: object.left,
+        y: object.top,
+        width: object.width * object.scaleX,
+        height: object.height * object.scaleY,
+      };
 
-            const processedCanvas = preprocessCanvas(preview);
+      const preview = cropRegion(sourceCanvas, region);
 
-            const text = await recognizeRegion(processedCanvas);
-            console.log(text);
+      const processedCanvas = preprocessCanvas(preview);
 
-            if (object.name === "metadata") {
-                showPreview("metadataPreview", preview);
-            }
+      const text = await recognizeRegion(processedCanvas);
+      console.log(text);
 
-            if (object.name === "coordinates") {
-                showPreview("coordinatePreview", preview);
-            }
+      if (object.name === "metadata") {
+        showPreview("metadataPreview", preview);
+        ocrResult.metadata = text;
+      }
 
-            if (object.name === "planning") {
-                showPreview("planningPreview", preview);
-            }
-        }
+      if (object.name === "coordinates") {
+        showPreview("coordinatePreview", preview);
+        ocrResult.coordinates = text;
+      }
 
-    });
+      if (object.name === "planning") {
+        showPreview("planningPreview", preview);
+        ocrResult.planning = text;
+      }
+    }
+    documentParser(ocrResult);
+
+    console.log(landDocument);
+  });
 }
 
+function showPreview(containerId, canvas) {
+  const container = document.getElementById(containerId);
 
-function showPreview(
-    containerId,
-    canvas
-) {
+  container.innerHTML = "";
 
-    const container = document.getElementById(containerId);
+  const image = new Image();
 
+  image.src = canvas.toDataURL();
 
-    container.innerHTML = "";
+  image.style.width = "600px";
 
+  image.style.maxWidth = "100%";
 
-    const image = new Image();
+  image.style.height = "auto";
 
+  image.style.border = "2px solid #888";
 
-    image.src = canvas.toDataURL();
-
-
-    image.style.width = "600px";
-
-    image.style.maxWidth = "100%";
-
-    image.style.height = "auto";
-
-
-    image.style.border = "2px solid #888";
-
-
-    container.appendChild(image);
-
+  container.appendChild(image);
 }
