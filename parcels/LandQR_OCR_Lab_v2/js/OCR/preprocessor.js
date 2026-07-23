@@ -27,3 +27,35 @@ function preprocessCanvas(canvas) {
 
   return output;
 }
+
+function preprocessCanvasExperiment(canvas) {
+  const output = document.createElement("canvas");
+
+  output.width = canvas.width * 2;
+  output.height = canvas.height * 2;
+
+  const context = output.getContext("2d");
+
+  context.imageSmoothingEnabled = false;
+
+  context.drawImage(canvas, 0, 0, output.width, output.height);
+
+  const image = context.getImageData(0, 0, output.width, output.height);
+
+  const pixels = image.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+    const gray =
+      pixels[i] * 0.299 + pixels[i + 1] * 0.587 + pixels[i + 2] * 0.114;
+
+    const value = gray > 175 ? 255 : 0;
+
+    pixels[i] = value;
+    pixels[i + 1] = value;
+    pixels[i + 2] = value;
+  }
+
+  context.putImageData(image, 0, 0);
+
+  return output;
+}

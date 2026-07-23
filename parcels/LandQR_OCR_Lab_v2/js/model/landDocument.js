@@ -6,6 +6,8 @@ const landDocument = {
 
     mapSheet: "",
 
+    oldMapSheet: "",
+
     commune: "",
 
     district: "",
@@ -17,7 +19,11 @@ const landDocument = {
     landType: "",
   },
 
-  coordinates: [],
+  coordinates: {
+    rawText: "",
+
+    points: [],
+  },
 
   planning: {
     rawText: "",

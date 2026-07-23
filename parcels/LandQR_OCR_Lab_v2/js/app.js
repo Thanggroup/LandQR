@@ -4,6 +4,7 @@ let appState = {
 };
 
 const fileInput = document.getElementById("fileInput");
+initializeRegionPreview();
 
 fileInput.addEventListener("change", async (event) => {
   appState.file = event.target.files[0];
@@ -21,7 +22,7 @@ fileInput.addEventListener("change", async (event) => {
 
   createRegions();
 
-  initializeRegionPreview(fabricCanvas, appState.canvas);
+  updateRegionPreview(fabricCanvas, appState.canvas);
 });
 
 function refresh() {
